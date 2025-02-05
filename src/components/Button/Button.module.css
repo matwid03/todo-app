@@ -8,7 +8,12 @@
 	border-radius: 4px;
 }
 
-.btn:hover {
+.btn:not(.disabled):hover {
 	color: white;
 	background-color: var(--color-main);
+}
+.disabled {
+	color: gray;
+	border: 1px solid gray;
+	cursor: not-allowed;
 }
