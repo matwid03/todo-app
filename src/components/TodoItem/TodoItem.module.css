@@ -1,0 +1,17 @@
+.li {
+	list-style-type: none;
+	border-top: 1px solid black;
+	padding: 16px 0;
+	display: flex;
+	align-items: center;
+	min-width: 400px;
+	gap: 8px;
+}
+
+.name {
+	width: 100%;
+}
+
+.done {
+	text-decoration: line-through;
+}
