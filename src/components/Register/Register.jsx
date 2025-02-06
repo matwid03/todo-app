@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { registerUser } from '../../utils/authService';
 import { Button } from '../Button/Button';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../firebase';
 
 export function Register() {
 	const [email, setEmail] = useState('');
@@ -10,12 +11,10 @@ export function Register() {
 	const handleRegister = async (e) => {
 		e.preventDefault();
 		setError(null);
-
 		try {
-			await registerUser(email, password);
-			alert('Rejestracja udana');
-		} catch (error) {
-			setError(error.message);
+			await createUserWithEmailAndPassword(auth, email, password);
+		} catch (err) {
+			setError(err.message);
 		}
 	};
 
