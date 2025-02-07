@@ -5,13 +5,13 @@ import { TodoItem } from './components/TodoItem/TodoItem';
 import { getSubheading } from './utils/getSubheading';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth, db } from './firebase';
-import { Register } from './components/Register/Register';
+import { AuthForm } from './components/AuthForm/AuthForm';
 import { Button } from './components/Button/Button';
-import { Login } from './components/Login/Login';
 import { addTodo } from './utils/addTodo';
 import { deleteTodo } from './utils/deleteTodo';
 import { collection, onSnapshot, query, where } from 'firebase/firestore';
 import { setIsDone } from './utils/setIsDone';
+import { editTodo } from './utils/editTodo';
 
 function App() {
 	const [user, setUser] = useState(null);
@@ -92,7 +92,17 @@ function App() {
 					)}
 					<ul>
 						{todos.map(({ id, name, isDone }) => (
-							<TodoItem key={id} name={name} isDone={isDone} onDeleteBtnClick={() => deleteTodo(id)} onDoneBtnClick={() => setIsDone(id)} />
+							<TodoItem
+								key={id}
+								id={id}
+								name={name}
+								isDone={isDone}
+								onDeleteBtnClick={() => deleteTodo(id)}
+								onDoneBtnClick={() => setIsDone(id, isDone)}
+								onEditBtnClick={(id, updatedName) => {
+									editTodo(id, updatedName);
+								}}
+							/>
 						))}
 					</ul>
 					<Button onClick={handleLogout} className={styles.btn}>
@@ -100,11 +110,13 @@ function App() {
 					</Button>
 				</>
 			) : (
-				<>
+				<div className={styles.container}>
 					<h1>Logowanie / Rejestracja</h1>
-					<Register />
-					<Login />
-				</>
+					<div>
+						<AuthForm isLogin={false} />
+						<AuthForm isLogin={true} />
+					</div>
+				</div>
 			)}
 		</div>
 	);
