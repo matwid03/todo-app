@@ -19,6 +19,7 @@ function App() {
 	const [todos, setTodos] = useState([]);
 	const [isAuthChecked, setIsAuthChecked] = useState(false);
 	const [loadingTodos, setLoadingTodos] = useState(true);
+	const [isLogin, setIsLogin] = useState(true);
 
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -111,10 +112,24 @@ function App() {
 				</>
 			) : (
 				<div className={styles.container}>
-					<h1>Logowanie / Rejestracja</h1>
+					<h1>{isLogin ? 'Logowanie' : 'Rejestracja'}</h1>
+					<AuthForm isLogin={isLogin} />
 					<div>
-						<AuthForm isLogin={false} />
-						<AuthForm isLogin={true} />
+						{isLogin ? (
+							<p>
+								Nie masz jeszcze konta?{' '}
+								<span className={styles.link} onClick={() => setIsLogin(false)}>
+									Zarejestruj się!
+								</span>
+							</p>
+						) : (
+							<p>
+								Masz już konto?{' '}
+								<span className={styles.link} onClick={() => setIsLogin(true)}>
+									Zaloguj się!
+								</span>
+							</p>
+						)}
 					</div>
 				</div>
 			)}
