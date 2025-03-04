@@ -1,10 +1,17 @@
-# React + Vite
+# Todo App with React and Firebase
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a simple Todo application built using **React** for the frontend and **Firebase** for authentication and database management. The app allows users to create, read, update, and delete tasks. Firebase handles user authentication (sign up, login, and logout) and stores tasks in a Firestore database.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **User Authentication**: Users can sign up, log in, and log out using Firebase Authentication.
+- **CRUD Operations for Todos**: Users can create, read, update, and delete tasks.
+- **Firestore Database**: Todos are stored in a Firestore database.
+
+## Technologies Used
+
+- **React**: JavaScript library for building user interfaces.
+- **Firebase**: Provides authentication and Firestore database.
+- **Firestore**: Cloud database to store todos.
 
 https://toappdo.netlify.app
