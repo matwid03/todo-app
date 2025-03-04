@@ -15,3 +15,6 @@ This is a simple Todo application built using **React** for the frontend and **F
 - **Firestore**: Cloud database to store todos.
 
 https://toappdo.netlify.app
+
+## Screenshots
+<img src="screenshots/s1.png" width='600'/><img src="screenshots/s2.png" width='600'/><img src="screenshots/s3.png" width='600'/><img src="screenshots/s4.png" width='600'/>
